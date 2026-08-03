@@ -1,0 +1,10 @@
+{
+    "name": "ACM",
+    "displayName": "AttaraX Cheat mod",
+    "author": "AttaraX",
+    "description": "Mindustry? Yes, but Cheats! \n\nThis mod fills 'nearly every crafting block with the items and liquids it requires even the Modded Blocks.\n\nIt has a UI that appears on the top-left side of the game, which allows you to choose the amount of items per second that are filled and on which teams you want this cheat to work.'",
+    "version": "1.1",
+    "minGameVersion": 145,
+    "subtitle": "[#AD813E[]]Version: 1.1.0",
+    "hidden": true
+}

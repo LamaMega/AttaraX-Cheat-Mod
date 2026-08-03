@@ -1,0 +1,48 @@
+Timer.schedule(() => {
+
+    Groups.build.each(build => {
+
+        // ONLY yellow team
+        if(build.team != Team.sharded) return;
+        //and
+        if(build.block instanceof CoreBlock) return;
+
+        // Get block consumers
+        let consumers = build.block.consumers;
+
+        if(consumers == null) return;
+
+        consumers.each(cons => {
+
+            // Item consumers
+            if(cons instanceof ConsumeItems){
+
+                cons.items.each(stack => {
+
+                    // Fill only needed item
+                    build.items.set(stack.item, 1);
+                });
+            }});
+
+        // // Infinite items
+        // if(build.items != null){
+        //     Vars.content.items().each(item => {
+        //         build.items.set(item, 1);
+        //     });
+        // }
+
+        // Infinite liquids
+        // if(build.liquids != null){
+        //     Vars.content.liquids().each(liquid => {
+        //         build.liquids.add(liquid, 9999);
+        //     });
+        // }
+
+        // Infinite power
+        // if(build.power != null){
+        //     build.power.status = 1;
+        // }
+
+    });
+
+}, 0, 1);

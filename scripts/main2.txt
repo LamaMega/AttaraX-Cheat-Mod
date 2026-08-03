@@ -1,0 +1,104 @@
+let itemAmount = 1;
+let updateDelay = 60; // ticks (60 = 1 second)
+
+let timer = 0;
+
+Events.run(Trigger.update, () => {
+
+    timer++;
+
+    if(timer < updateDelay) return;
+
+    timer = 0;
+
+    Groups.build.each(build => {
+
+        // Yellow team only
+        if(build.team != Team.sharded) return;
+
+        // Ignore cores
+        if(build.block instanceof CoreBlock) return;
+
+        let consumers = build.block.consumers;
+
+        if(consumers == null) return;
+
+        consumers.each(cons => {
+
+            // Needed items only
+            if(cons instanceof ConsumeItems){
+
+                cons.items.each(stack => {
+
+                    build.items.set(
+                        stack.item,
+                        itemAmount
+                    );
+
+                });
+
+            }
+
+        });
+
+    });
+
+});
+
+
+// UI
+Events.on(ClientLoadEvent, e => {
+
+    const dialog = new BaseDialog("Infinite Resource Settings");
+
+    dialog.cont.pane(t => {
+
+        // Item amount
+        t.add("Items Per Execution").row();
+
+        let amountLabel = t.add("" + itemAmount).get();
+
+        t.row();
+
+        t.slider(1, 100, 1, itemAmount, v => {
+
+            itemAmount = Math.floor(v);
+
+            amountLabel.setText("" + itemAmount);
+
+        }).width(300);
+
+        t.row();
+
+        // Delay
+        t.add("Delay (seconds)").padTop(20).row();
+
+        let delayLabel = t.add("" + (updateDelay / 60).toFixed(1)).get();
+
+        t.row();
+
+        t.slider(0.1, 10, 0.1, 1, v => {
+
+            updateDelay = Math.floor(v * 60);
+
+            delayLabel.setText(v.toFixed(1));
+
+        }).width(300);
+
+    });
+
+    dialog.buttons.button("Close", () => {
+        dialog.hide();
+    });
+
+   Vars.ui.hudGroup.fill(cons(table => {
+
+    table.top().left();
+
+    table.button("∞", run(() => {
+        dialog.show();
+    })).size(50);
+
+}));
+
+});
