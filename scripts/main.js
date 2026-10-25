@@ -1,4 +1,4 @@
-let itemAmount = 9999;
+let itemAmount = 0;
 let updateDelay = 60; // ticks (1 second)
 let timer = 0;
 let liquidAmount = 9999;
@@ -27,7 +27,7 @@ Events.run(Trigger.update, () => {
         // ========================
         for(let i = 0; i < consumers.length; i++){
             let cons = consumers[i];
-
+            
             if(cons instanceof ConsumeItems){
 
                 cons.items.forEach(stack => {

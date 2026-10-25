@@ -1,0 +1,33 @@
+{
+    
+    "name": "Duo 3",
+    "type": "ItemTurret",
+    "health": 420,
+    "size": 1,
+    "reload": 11,
+    "shake": 1,
+    "range": 6500,
+    "rotateSpeed": 20,
+    "recoil": 2,
+    "shootCone": 8,
+    "ammoTypes": {
+        "silicon": {
+            "type": "BasicBulletType",
+            "length": 6500,
+            "damage": 80,
+            "ammoMultiplier": 6,
+            "width": 10,
+            "toColor": "ec6fff",
+            "reloadMultiplier": 1.6,
+            "homingPower":0.5,
+            "lifetime": 6500,
+            "speed": 50
+        }
+    },
+    "category": "turret",
+    "research": "duo-t2",
+    "requirements": [    
+        "copper/75",
+        "lead/50"
+    ]
+}

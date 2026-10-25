@@ -1,0 +1,50 @@
+{	
+	"name": "All Item Crafter",
+    "type": "GenericCrafter",
+    "description": "Dont use this if u want to play mindustry.",
+    "health": 100,
+	"size": 5,
+	"hasItems": true,
+	"itemCapacity": 1000,	
+	"craftTime": 5,
+	"craftEffect": "smeltsmoke",
+	"updateEffect": "none",
+	"buildCostMultiplier": 0.2,
+	"consumes": {
+		"power": 1,
+		"items": {
+			"items": [
+            "copper/5",
+			"lead/5",
+			"graphite/5",
+			"metaglass/5",
+            "titanium/5",
+            "plastanium/5",
+            "phase-fabric/5",
+            "surge-alloy/5",
+            "thorium/5",
+            "silicon/5"
+			]
+		}
+	},
+	"requirements": [
+        "copper/1"
+
+	],
+	"category": "crafting",
+	"research": "graphite-press",
+	"outputItems": [
+			"copper/15",
+			"lead/15",
+			"graphite/15",
+			"metaglass/15",
+            "titanium/15",
+            "plastanium/15",
+            "phase-fabric/15",
+            "surge-alloy/15",
+            "thorium/15",
+            "silicon/15"
+    ],
+
+	"ambientSoundVolume": 0
+}
